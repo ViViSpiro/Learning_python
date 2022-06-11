@@ -13,7 +13,7 @@ class Stock:
 
 
 """    def outgoing(self):
-        self.dict.setdefault(name).pop(name)"""
+        self.dict.setdefault(name).pop(0)"""
 
 
 class OfficeEquipment:
