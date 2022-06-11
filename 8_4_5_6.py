@@ -7,8 +7,11 @@ class Stock:
 
     dict = {}
 
-    def incoming(self, name):
+    def incoming(self, name, model, price, count):
         self.name = name
+        self.model = model
+        self.price = price
+        self.count = count
         self.dict.setdefault(self.name, [self.model, self.price, self.count])
 
     def outgoing(self, name):
@@ -70,13 +73,10 @@ def reception():
 
 
 stock = Stock("Printer", "HP Neverstop", 18500, 40)
-printer = Printer("Printer", "HP Laser", 12500, 60, "Printing")
-stock.incoming("printer")
-scanner = Scanner("Scanner", "HP ScanJet", 50700, 55, "Scanning")
-stock.incoming("scanner")
-copier = Copier("Copier", "Xerox", 38900, 70, "Copying")
-stock.incoming("copier")
+stock.incoming("Printer", "HP Laser", 12500, 60)
+stock.incoming("Scanner", "HP ScanJet", 50700, 55)
+stock.incoming("Copier", "Xerox", 38900, 70)
 print(stock.dict)
-stock.outgoing("printer")
+stock.outgoing("Printer")
 print(stock.dict)
 reception()
