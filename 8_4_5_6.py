@@ -7,13 +7,12 @@ class Stock:
 
     dict = {}
 
-    def incoming(self, article):
-        self.article = article.__class__.__name__
-        self.dict.setdefault(self.name, [self.model, self.price, self.count]).append(article)
+    def incoming(self, name):
+        self.name = name
+        self.dict.setdefault(self.name, [self.model, self.price, self.count])
 
-
-"""    def outgoing(self):
-        self.dict.setdefault(name).pop(name)"""
+    def outgoing(self, name):
+        self.dict.setdefault(name).pop()
 
 
 class OfficeEquipment:
@@ -72,12 +71,12 @@ def reception():
 
 stock = Stock("Printer", "HP Neverstop", 18500, 40)
 printer = Printer("Printer", "HP Laser", 12500, 60, "Printing")
-stock.incoming(printer)
+stock.incoming("printer")
 scanner = Scanner("Scanner", "HP ScanJet", 50700, 55, "Scanning")
-stock.incoming(scanner)
+stock.incoming("scanner")
 copier = Copier("Copier", "Xerox", 38900, 70, "Copying")
-stock.incoming(copier)
+stock.incoming("copier")
 print(stock.dict)
-""""stock.outgoing(Printer)
-print(stock.dict)"""
+stock.outgoing("printer")
+print(stock.dict)
 reception()
